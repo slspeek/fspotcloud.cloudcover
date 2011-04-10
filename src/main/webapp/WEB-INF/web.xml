@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+    <servlet>
+        <servlet-name>
+            com.google.appengine.testing.cloudcover.CloudCover CloudCoverService
+        </servlet-name>
+        <servlet-class>
+            com.google.appengine.testing.cloudcover.server.CloudCoverServiceImpl
+        </servlet-class>
+        <init-param>
+            <param-name>cloudcover.config.class</param-name>
+            <param-value>com.google.appengine.testing.cloudcover.cloudcovertest.ExampleTestRunnerConfig</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>
+            com.google.appengine.testing.cloudcover.CloudCover CloudCoverService
+        </servlet-name>
+        <url-pattern>/com.google.appengine.testing.cloudcover.CloudCover/cloudcover</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>
+            com.google.appengine.testing.cloudcover.CloudCover CloudCoverService
+        </servlet-name>
+        <url-pattern>/cloudcover/queueAction/*</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/cloudcover*</url-pattern>
+            <url-pattern>/com.google.appengine.testing.cloudcover.CloudCover/cloudcover</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+</web-app>

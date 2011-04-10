@@ -1,0 +1,19 @@
+.test-passed {
+    color: green;
+}
+
+.test-failed {
+    color: red;
+}
+
+.test-in-progress {
+    color: black;
+}
+
+.test-not-started {
+    color: black;
+}
+
+.test-too-slow {
+    color: orange;
+}
