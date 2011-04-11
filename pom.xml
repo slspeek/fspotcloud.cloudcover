@@ -2,56 +2,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.google.appengine.testing.cloudcover</groupId>
-	<artifactId>cloudcover</artifactId>
-	<packaging>jar</packaging>
+	<artifactId>cloudcover-parent</artifactId>
+	<packaging>pom</packaging>
 	<version>1.0.1.final-forGAE1.4.3</version>
-	<name>CloudCover</name>
-	<url>http://code.google.com/p/fspotcloud</url>
+	<url>http://code.google.com/p/cloudcover</url>
 	<scm>
 		<connection>scm:hg:https://cloudcover.fspotcloud.googlecode.com/hg/</connection>
 		<url>http://code.google.com/p/fspotcloud/source/list?repo=cloudcover</url>
 	</scm>
-	<developers>
-		<developer>
-			<id>slspeek</id>
-			<name>Steven L. Speek</name>
-			<email>slspeek@gmail.com</email>
-			<roles>
-				<role>Programmer</role>
-			</roles>
-			<timezone>+1</timezone>
-		</developer>
-	</developers>
 	<build>
-		<plugins>
-			<!-- All the fantastical settings that GWT needs -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.1.0-1</version>
-				<configuration>
-					<logLevel>INFO</logLevel>
-					<!-- match -Dgae.port -->
-					<port>${gae.port}</port>
-					<!-- This must point to your GWT modules! -->
-					<compileTargets>
-						<value></value>
-					</compileTargets>
-					<extraJvmArgs>-Xmx512m</extraJvmArgs>
-					<runTarget>/CloudCover.html</runTarget>
-					<style>PRETTY</style>
-					<gwtVersion>${gwt.version}</gwtVersion>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 		<defaultGoal>install</defaultGoal>
 		<pluginManagement>
 			<plugins>
@@ -63,20 +22,10 @@
 						<target>1.6</target>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.jwallez.plugin</groupId>
-					<artifactId>maven-google-plugin</artifactId>
-					<version>0.1-SNAPSHOT</version>
-				</plugin>
-				<plugin>
+			    <plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.0-beta-3</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.2</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -84,103 +33,7 @@
 	<properties>
 		<gwt.version>2.1.1</gwt.version>
 		<gae.version>1.4.3</gae.version>
-		<gae.home>${user.home}/appengine-java-sdk-${gae.version}</gae.home>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>javax.jdo</groupId>
-			<artifactId>jdo2-api</artifactId>
-			<version>2.3-eb</version>
-			<exclusions>
-				<!-- exclude the legacy javax.transaction:transaction-api and replace 
-					it with javax.transaction:jta (it appears to be the same thing) -->
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>transaction-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine.orm</groupId>
-			<artifactId>datanucleus-appengine</artifactId>
-			<version>1.0.4.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.datanucleus</groupId>
-			<artifactId>datanucleus-core</artifactId>
-			<version>1.1.5</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>transaction-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>datanucleus-jpa</artifactId>
-			<version>1.1.5</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>geronimo-jpa_3.0_spec</artifactId>
-			<version>1.1.1</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-labs</artifactId>
-			<version>${gae.version}</version>
-		</dependency>
-
-		<!-- GAE libraries for local testing as described here: http://code.google.com/appengine/docs/java/howto/unittesting.html -->
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-stubs</artifactId>
-			<version>${gae.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-local-runtime</artifactId>
-			<version>${gae.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-testing</artifactId>
-			<version>${gae.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-		</dependency>
-	</dependencies>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>maven-google-plugin-repository</id>
@@ -203,13 +56,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.3.1</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependencies</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 				<configuration>
 					<aggregate>true</aggregate>
 				</configuration>
@@ -265,4 +111,8 @@
 			<url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
 		</repository>
 	</repositories>
+	<modules>
+		<module>cloudcover</module>
+		<module>cloudcover-ui</module>
+	</modules>
 </project>
