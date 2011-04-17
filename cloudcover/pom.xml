@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.google.appengine.testing.cloudcover</groupId>
 		<artifactId>cloudcover-parent</artifactId>
-		<version>1.0.1.final-forGAE1.4.3</version>
+		<version>1.0.1.final-forGAE1.4.3-1</version>
 	</parent>
 	<artifactId>cloudcover</artifactId>
 	<packaging>jar</packaging>

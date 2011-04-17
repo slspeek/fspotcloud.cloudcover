@@ -4,7 +4,7 @@
 	<groupId>com.google.appengine.testing.cloudcover</groupId>
 	<artifactId>cloudcover-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.1.final-forGAE1.4.3</version>
+	<version>1.0.1.final-forGAE1.4.3-1</version>
 	<url>http://code.google.com/p/cloudcover</url>
 	<scm>
 		<connection>scm:hg:https://cloudcover.fspotcloud.googlecode.com/hg/</connection>
@@ -31,7 +31,7 @@
 		</pluginManagement>
 	</build>
 	<properties>
-		<gwt.version>2.1.1</gwt.version>
+		<gwt.version>2.2.0</gwt.version>
 		<gae.version>1.4.3</gae.version>
 	</properties>
 	<pluginRepositories>

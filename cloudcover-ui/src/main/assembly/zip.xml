@@ -6,13 +6,16 @@
 	<formats>
 		<format>zip</format>
 	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
 			<directory>${project.build.directory}/${pom.artifactId}-${version}</directory>
+			<outputDirectory/>
 		</fileSet>
 		<fileSet>
-			<directory>src/main/webapp</directory>
+			<directory>${project.basedir}/src/main/webapp</directory>
 			<excludes><exclude>WEB-INF/**</exclude></excludes>
+			<outputDirectory/>
 		</fileSet>
 	</fileSets>
 </assembly>
