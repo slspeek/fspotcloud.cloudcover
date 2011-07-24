@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.google.appengine.testing.cloudcover</groupId>
 		<artifactId>cloudcover-parent</artifactId>
-		<version>1.0.1.final-forGAE1.4.3-1</version>
+		<version>1.0.1.final-GAE1.5.0-GWT2.3.0</version>
 	</parent>
 	<artifactId>cloudcover-ui</artifactId>
 	<packaging>jar</packaging>
@@ -58,7 +58,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.2.0</version>
+				<version>${gwt.plugin.version}</version>
 				<configuration>
 					<logLevel>INFO</logLevel>
 					<!-- match -Dgae.port -->
